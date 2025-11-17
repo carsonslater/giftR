@@ -38,7 +38,8 @@ install.packages(c("quarto", "glue"))
 
 ``` r
 
-library(YourPackageName)  # replace with your package name
+pak::pak("carsonslater/giftR")
+library("giftR")
 
 names <- c("John", "Aidan", "Clara", "Jimmy", "Theo",
            "Meredith", "Caleb", "Samantha", "Sharon")
