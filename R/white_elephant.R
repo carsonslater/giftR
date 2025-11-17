@@ -1,4 +1,4 @@
-#' White Elephant Gift Exchange Presentation
+#' White Elephant Gift Exchange Presentation (Improved)
 #'
 #' Generates a reveal.js presentation with:
 #' - Title slide
@@ -21,68 +21,75 @@ white_elephant <- function(names) {
   tmpdir <- tempdir()
   qmd_file <- file.path(tmpdir, "white-elephant.qmd")
 
-  qmd_content <- glue::glue(
-'---
-title: "White Elephant Gift Exchange"
+  # --- YAML header ---
+  yaml <- "
+---
+title: \"White Elephant Gift Exchange\"
 format:
   revealjs:
-    theme: manhattan
+    theme: simple
     slide-number: true
     navigation-mode: linear
     preload: true
-    include-in-header:
-      text: |
-        <style>
-        .footer-link {{
-          position: absolute;
-          bottom: 20px;
-          right: 20px;
-          font-size: 0.8rem;
-          opacity: 0.8;
-        }}
-        .footer-link a {{
-          color: #888;
-          text-decoration: none;
-        }}
-        .footer-link a:hover {{
-          color: #000;
-        }}
-        </style>
 ---
+"
 
-# White Elephant Gift Exchange
+  cat(yaml, file = qmd_file)
 
-**A Fun Randomized Gift Game**
-
----
-
-## 📝 Rules {{#rules}}
-
-1. Person 1 selects and opens a gift.
-2. Each subsequent person may open a new gift or steal an opened one.
-3. Gifts may only be stolen a limited number of times.
-4. Continue until all gifts are opened.
-
-{paste0(lapply(seq_along(order), function(i) {{
-  name <- order[i]
-  glue::glue("
----
-## Person {i}
-
-**{name}** goes now!
-
-<div class=\'footer-link\'><a href=\'#/rules\'>Rules</a></div>
-")
-}}), collapse = "\\n") }
-'
+  # --- CSS (directly in QMD) ---
+  css <- c(
+    "<style>",
+    ".footer-link {",
+    "  position: absolute;",
+    "  bottom: 20px;",
+    "  right: 20px;",
+    "  font-size: 0.8rem;",
+    "  opacity: 0.8;",
+    "}",
+    ".footer-link a {",
+    "  color: #888;",
+    "  text-decoration: none;",
+    "}",
+    ".footer-link a:hover {",
+    "  color: #000;",
+    "}",
+    "</style>",
+    ""
   )
 
-  writeLines(qmd_content, qmd_file)
+  # --- Title and Rules slides ---
+  slides <- c(
+    "## A Fun Randomized Gift Game",
+    "",
+    "---",
+    "\n\n## 📝 Rules {#rules}",
+    "",
+    "1. Person 1 selects and opens a gift.\n",
+    "2. Each subsequent person may open a new gift or steal an opened one.\n",
+    "3. Gifts may only be stolen a limited number of times.\n",
+    "4. Continue until all gifts are opened.\n",
+    ""
+  )
 
-  # Render
+  # writeLines(c(css, slides), qmd_file)
+  cat(css, file = qmd_file, sep = "\n", append = TRUE)
+  cat(slides, file = qmd_file, sep = "\n", append = TRUE)
+
+
+  # --- Participant slides (improved layout) ---
+  participant_slides <- sapply(seq_along(order), function(i) {
+    name <- order[i]
+    glue::glue(
+      "---\n\n# {name}\n\n**It's your turn!**\n\n<div class='footer-link'><a href='#/rules'>Rules</a></div>\n"
+    )
+  })
+
+  cat(participant_slides, file = qmd_file, sep = "\n", append = TRUE)
+
+
+  # --- Render ---
   quarto::quarto_render(qmd_file, quiet = FALSE)
 
-  # Open in Viewer or browser
   viewer_file <- file.path(tmpdir, "white-elephant.html")
   viewer <- getOption("viewer")
   if (!is.null(viewer)) {
