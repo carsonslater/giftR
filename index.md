@@ -21,6 +21,4 @@ white_elephant(c("Alice", "Bob", "Charlie"))
 
 This will open instructions in the RStudio/Positron viewer pane.
 
-## Hex Sticker
-
-![](reference/figures/logo.png)
+Have fun!
