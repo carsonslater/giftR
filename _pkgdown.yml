@@ -1,0 +1,11 @@
+template:
+  bootstrap: 5
+
+url: https://yourusername.github.io/giftR
+
+navbar:
+  title: giftR
+
+logo:
+  path: man/figures/logo.png
+  alt: "giftR hex sticker"
