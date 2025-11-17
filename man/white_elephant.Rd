@@ -4,19 +4,22 @@
 \alias{white_elephant}
 \title{Facilitate a White Elephant Gift Exchange}
 \usage{
-white_elephant(names)
+white_elephant(names, occasion = "White Elephant Gift Exchange")
 }
 \arguments{
-\item{names}{A character vector of participant names.}
+\item{names}{Character vector of participant names.}
+
+\item{occasion}{Optional title for the event.}
 }
 \value{
-Invisibly returns the participant order.
+Invisibly returns the randomized order of participants.
 }
 \description{
-This function takes a vector of participant names and prints instructions
-to the RStudio/Positron preview panel for running a white elephant gift exchange.
+Creates a Quarto reveal.js presentation showing:
+\itemize{
+\item Title slide (occasion + date)
+\item Rules slide
+\item One slide per participant in randomized order
+Each slide includes a bottom-right link back to the rules slide.
 }
-\examples{
-white_elephant(c("Alice", "Bob", "Charlie"))
-
 }

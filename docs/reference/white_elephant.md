@@ -1,28 +1,30 @@
 # Facilitate a White Elephant Gift Exchange
 
-This function takes a vector of participant names and prints
-instructions to the RStudio/Positron preview panel for running a white
-elephant gift exchange.
+Creates a Quarto reveal.js presentation showing:
+
+- Title slide (occasion + date)
+
+- Rules slide
+
+- One slide per participant in randomized order Each slide includes a
+  bottom-right link back to the rules slide.
 
 ## Usage
 
 ``` r
-white_elephant(names)
+white_elephant(names, occasion = "White Elephant Gift Exchange")
 ```
 
 ## Arguments
 
 - names:
 
-  A character vector of participant names.
+  Character vector of participant names.
+
+- occasion:
+
+  Optional title for the event.
 
 ## Value
 
-Invisibly returns the participant order.
-
-## Examples
-
-``` r
-white_elephant(c("Alice", "Bob", "Charlie"))
-#> Error: RStudio not running
-```
+Invisibly returns the randomized order of participants.
