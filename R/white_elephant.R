@@ -101,7 +101,6 @@ format:
   # ---- Render ----
   quarto::quarto_render(
     qmd_file,
-    output_dir = tmpdir,
     quiet = TRUE
   )
 
