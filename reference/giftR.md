@@ -5,4 +5,4 @@ exchange.
 
 ## Author
 
-**Maintainer**: Carson Slater <carson@example.com>
+**Maintainer**: Carson Slater <Carson_Slater1@baylor.edu>

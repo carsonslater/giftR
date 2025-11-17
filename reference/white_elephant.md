@@ -1,18 +1,19 @@
-# Facilitate a White Elephant Gift Exchange
+# White Elephant Gift Exchange Presentation
 
-Creates a Quarto reveal.js presentation showing:
+Generates a reveal.js presentation with:
 
-- Title slide (occasion + date)
+- Title slide
 
 - Rules slide
 
-- One slide per participant in randomized order Each slide includes a
-  bottom-right link back to the rules slide.
+- One slide per participant in randomized order
+
+- A footer link to the Rules slide on every slide
 
 ## Usage
 
 ``` r
-white_elephant(names, occasion = "White Elephant Gift Exchange")
+white_elephant(names)
 ```
 
 ## Arguments
@@ -21,10 +22,6 @@ white_elephant(names, occasion = "White Elephant Gift Exchange")
 
   Character vector of participant names.
 
-- occasion:
-
-  Optional title for the event.
-
 ## Value
 
-Invisibly returns the randomized order of participants.
+Renders a reveal.js presentation in the Viewer pane.
