@@ -9,6 +9,6 @@
 The giftR package provides tools to facilitate a white elephant gift exchange.
 }
 \author{
-\strong{Maintainer}: Carson Slater \email{carson@example.com}
+\strong{Maintainer}: Carson Slater \email{Carson_Slater1@baylor.edu}
 
 }

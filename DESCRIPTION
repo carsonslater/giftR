@@ -1,7 +1,7 @@
 Package: giftR
 Type: Package
 Title: White Elephant Gift Exchange Facilitator
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: person("Carson", "Slater", email="Carson_Slater1@baylor.edu", role=c("aut","cre"))
 Description: Provides a simple function to facilitate a white elephant gift exchange by printing instructions in the RStudio or Positron preview panel.
 License: MIT + file LICENSE

@@ -6,4 +6,4 @@
   [`giftR`](https://github.com/carsonslater/giftR/reference/giftR.md) :
   giftR: A White Elephant Gift Exchange Helper
 - [`white_elephant()`](https://github.com/carsonslater/giftR/reference/white_elephant.md)
-  : Facilitate a White Elephant Gift Exchange
+  : White Elephant Gift Exchange Presentation

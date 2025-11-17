@@ -2,24 +2,22 @@
 % Please edit documentation in R/white_elephant.R
 \name{white_elephant}
 \alias{white_elephant}
-\title{Facilitate a White Elephant Gift Exchange}
+\title{White Elephant Gift Exchange Presentation}
 \usage{
-white_elephant(names, occasion = "White Elephant Gift Exchange")
+white_elephant(names)
 }
 \arguments{
 \item{names}{Character vector of participant names.}
-
-\item{occasion}{Optional title for the event.}
 }
 \value{
-Invisibly returns the randomized order of participants.
+Renders a reveal.js presentation in the Viewer pane.
 }
 \description{
-Creates a Quarto reveal.js presentation showing:
+Generates a reveal.js presentation with:
 \itemize{
-\item Title slide (occasion + date)
+\item Title slide
 \item Rules slide
 \item One slide per participant in randomized order
-Each slide includes a bottom-right link back to the rules slide.
+\item A footer link to the Rules slide on every slide
 }
 }
