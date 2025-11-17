@@ -23,7 +23,9 @@ white_elephant <- function(names) {
   qmd_file <- file.path(tmpdir, "white-elephant.qmd")
 
   # ---- YAML header (no HTML allowed here!) ----
-  yaml <- "---
+# ---- YAML header ----
+  yaml <- "
+---
 title: \"White Elephant Gift Exchange\"
 format:
   revealjs:
@@ -31,6 +33,24 @@ format:
     slide-number: true
     navigation-mode: default
     preload: true
+    include-in-header:
+      text: |
+        <style>
+        .footer-link {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          font-size: 0.8rem;
+          opacity: 0.8;
+        }
+        .footer-link a {
+          color: #888;
+          text-decoration: none;
+        }
+        .footer-link a:hover {
+          color: #000;
+        }
+        </style>
 ---
 
 "
@@ -64,27 +84,8 @@ format:
 
   slides_block <- paste0(slides, collapse = "\n\n---\n\n")
 
-  # ---- Footer CSS ----
-  css_block <- "
-<style>
-.footer-link {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  font-size: 0.8rem;
-  opacity: 0.8;
-}
-.footer-link a {
-  color: #888;
-  text-decoration: none;
-}
-.footer-link a:hover {
-  color: #000;
-}
-</style>
-"
-
   # ---- Write full QMD file ----
+# ---- Write full QMD file ----
   writeLines(
     c(
       yaml,
@@ -101,7 +102,7 @@ format:
   # ---- Render ----
   quarto::quarto_render(
     qmd_file,
-    quiet = TRUE
+    quiet = FALSE
   )
 
   viewer_file <- file.path(tmpdir, "white-elephant.html")
