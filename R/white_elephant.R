@@ -93,7 +93,6 @@ format:
       "\n---\n",
       rules_slide,
       "\n---\n",
-      css_block,
       slides_block
     ),
     qmd_file
