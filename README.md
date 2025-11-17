@@ -6,7 +6,7 @@ A simple R package to facilitate a fun **White Elephant** gift exchange.
 
 ```r
 # install.packages("devtools")
-devtools::install_github("yourusername/giftR")
+devtools::install_github("carsonslater/giftR")
 ```
 
 ## Example

@@ -1,7 +1,7 @@
 template:
   bootstrap: 5
 
-url: https://yourusername.github.io/giftR
+url: https://github.com/carsonslater/giftR
 
 navbar:
   title: giftR
