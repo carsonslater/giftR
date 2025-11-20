@@ -1,9 +1,9 @@
 Package: giftR
 Type: Package
-Title: White Elephant Gift Exchange Facilitator
-Version: 0.1.2
+Title: Holiday Gift Exchange Facilitator
+Version: 0.2.0
 Authors@R: person("Carson", "Slater", email="Carson_Slater1@baylor.edu", role=c("aut","cre"))
-Description: Provides a simple function to facilitate a white elephant gift exchange by printing instructions in the RStudio or Positron preview panel.
+Description: Provides tools to facilitate holiday gift exchanges, including a White Elephant game facilitator and a Secret Santa organizer.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -11,4 +11,4 @@ RoxygenNote: 7.3.3
 Imports:
     glue,
     quarto,
-    rstudioapi
+    blastula

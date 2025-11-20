@@ -2,7 +2,7 @@
 % Please edit documentation in R/white_elephant.R
 \name{white_elephant}
 \alias{white_elephant}
-\title{White Elephant Gift Exchange Presentation}
+\title{White Elephant Gift Exchange Presentation (Improved)}
 \usage{
 white_elephant(names)
 }
