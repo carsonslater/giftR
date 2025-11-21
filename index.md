@@ -1,25 +1,9 @@
 # giftR
 
-> A White Elephant Gift Exchange Facilitator
+> A Holiday Gift Exchange Facilitator
 
-The
-[`white_elephant()`](https://github.com/carsonslater/giftR/reference/white_elephant.md)
-function generates a **reveal.js presentation** to run a White Elephant
-gift exchange. It’s perfect for holiday parties, office events, or any
-gathering where you want to randomly reveal participants’ turns in a
-fun, interactive way.
-
-------------------------------------------------------------------------
-
-## Features
-
-- Automatically creates a **title slide** and **rules slide**.
-- Randomizes the **order of participants**.
-- Generates **one slide per participant** with a “It’s your turn!”
-  prompt.
-- Includes a **footer link to the rules** on every slide.
-- Renders a **reveal.js presentation** viewable in your RStudio Viewer
-  or web browser.
+`giftR` provides tools to facilitate holiday gift exchanges, including a
+White Elephant game facilitator and a Secret Santa organizer.
 
 ------------------------------------------------------------------------
 
@@ -29,17 +13,35 @@ Make sure you have the required packages:
 
 ``` r
 
-install.packages(c("quarto", "glue"))
+install.packages(c("quarto", "glue", "blastula"))
+pak::pak("carsonslater/giftR")
+library("giftR")
 ```
 
 ------------------------------------------------------------------------
 
-## Example Usage
+## White Elephant Exchange
+
+The
+[`white_elephant()`](https://github.com/carsonslater/giftR/reference/white_elephant.md)
+function generates a **reveal.js presentation** to run a White Elephant
+gift exchange. It’s perfect for holiday parties, office events, or any
+gathering where you want to randomly reveal participants’ turns in a
+fun, interactive way.
+
+### Features
+
+- Automatically creates a **title slide** and **rules slide**.
+- Randomizes the **order of participants**.
+- Generates **one slide per participant** with a “It’s your turn!”
+  prompt.
+- Includes a **footer link to the rules** on every slide.
+- Renders a **reveal.js presentation** viewable in your RStudio Viewer
+  or web browser.
+
+### Usage
 
 ``` r
-
-pak::pak("carsonslater/giftR")
-library("giftR")
 
 names <- c("John", "Aidan", "Clara", "Jimmy", "Theo",
            "Meredith", "Caleb", "Samantha", "Sharon")
@@ -56,3 +58,40 @@ slide that looks like this:
 
 ![Rules Slide](reference/figures/example1.png)![Example
 Slide](reference/figures/example2.png)
+
+------------------------------------------------------------------------
+
+## Secret Santa Exchange
+
+The
+[`secret_santa()`](https://github.com/carsonslater/giftR/reference/secret_santa.md)
+function assigns a Secret Santa to each participant and sends them an
+email with their assignment using the `blastula` package. It ensures
+that no one is assigned themselves.
+
+### Usage
+
+To use this function, you need to provide a list of names and emails.
+You also need to have your email credentials set up.
+
+**Important**: The function expects your email password to be stored in
+an environment variable (default: `SMTP_PASSWORD`).
+
+``` r
+
+# 1. Set your email password (or add to .Renviron)
+Sys.setenv(SMTP_PASSWORD = "your_app_password")
+
+# 2. Define participants
+names <- c("Alice", "Bob", "Charlie")
+emails <- c("alice@example.com", "bob@example.com", "charlie@example.com")
+
+# 3. Run the exchange
+secret_santa(
+  names = names,
+  emails = emails,
+  sender_email = "organizer@example.com",
+  smtp_provider = "gmail", # or "outlook", "office365", etc.
+  subject = "Your Secret Santa Assignment 🎅"
+)
+```

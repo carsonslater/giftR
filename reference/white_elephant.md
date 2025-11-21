@@ -1,4 +1,4 @@
-# White Elephant Gift Exchange Presentation
+# White Elephant Gift Exchange Presentation (Improved)
 
 Generates a reveal.js presentation with:
 
